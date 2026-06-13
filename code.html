@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRAFTSMAN | High-Fidelity Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary-container": "#e2e2e2",
+                "error-container": "#93000a",
+                "on-tertiary-fixed": "#1d1b19",
+                "surface-bright": "#3a3939",
+                "surface-container-highest": "#353534",
+                "on-secondary-fixed-variant": "#45464e",
+                "border-subtle": "#27272A",
+                "secondary-container": "#45464e",
+                "primary": "#ffffff",
+                "surface-container": "#201f1f",
+                "tertiary-fixed": "#e7e1dd",
+                "on-error": "#690005",
+                "on-surface-variant": "#c4c7c8",
+                "on-secondary": "#2f3037",
+                "background": "#131313",
+                "on-tertiary": "#32302d",
+                "on-background": "#e5e2e1",
+                "secondary-fixed-dim": "#c6c6cf",
+                "outline-variant": "#444748",
+                "on-surface": "#e5e2e1",
+                "outline": "#8e9192",
+                "on-error-container": "#ffdad6",
+                "surface-container-lowest": "#0e0e0e",
+                "surface-elevated": "#0A0A0A",
+                "error": "#ffb4ab",
+                "surface-container-low": "#1c1b1b",
+                "on-primary-fixed-variant": "#454747",
+                "inverse-primary": "#5d5f5f",
+                "tertiary-container": "#e7e1dd",
+                "on-tertiary-container": "#676460",
+                "surface": "#131313",
+                "secondary": "#c6c6cf",
+                "surface-tint": "#c6c6c7",
+                "surface-variant": "#353534",
+                "surface-dim": "#131313",
+                "primary-fixed-dim": "#c6c6c7",
+                "on-secondary-container": "#b4b4bd",
+                "pure-black": "#000000",
+                "inverse-on-surface": "#313030",
+                "surface-container-high": "#2a2a2a",
+                "on-secondary-fixed": "#1a1b22",
+                "inverse-surface": "#e5e2e1",
+                "on-tertiary-fixed-variant": "#494643",
+                "tertiary-fixed-dim": "#cbc6c1",
+                "on-primary": "#2f3131",
+                "tertiary": "#ffffff",
+                "primary-fixed": "#e2e2e2",
+                "secondary-fixed": "#e2e1eb",
+                "on-primary-fixed": "#1a1c1c",
+                "on-primary-container": "#636565"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "stack-lg": "32px",
+                "stack-md": "16px",
+                "container-max": "1280px",
+                "margin-x": "32px",
+                "stack-sm": "8px",
+                "section-gap": "120px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "display-lg": ["Hanken Grotesk"],
+                "label-sm": ["JetBrains Mono"],
+                "label-md": ["JetBrains Mono"],
+                "headline-md": ["Hanken Grotesk"],
+                "body-md": ["Inter"],
+                "headline-sm": ["Hanken Grotesk"],
+                "body-lg": ["Inter"],
+                "display-lg-mobile": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .skill-bar-fill {
+            transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .craftsman-card {
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .craftsman-card:hover {
+            border-color: #FAFAFA;
+        }
+
+        .craftsman-card:hover .mono-label {
+            transform: translateX(4px);
+        }
+
+        .mono-label {
+            transition: transform 0.3s ease;
+        }
+        
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid white;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<div class="custom-cursor hidden md:block" id="cursor"></div>
+<!-- Navigation Shell -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border-subtle">
+<nav class="flex justify-between items-center w-full px-margin-x h-16 max-w-container-max mx-auto">
+<div class="font-label-md text-label-md font-bold tracking-tighter text-primary">
+                CRAFTSMAN
+            </div>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="font-label-md text-label-md text-primary font-bold border-b border-primary pb-1" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Projects</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Journal</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="font-label-md text-label-md border border-primary px-4 py-2 hover:bg-white hover:text-black transition-all">Resume</button>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-x mb-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-7 lg:col-span-8">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-stack-lg">
+                        Crafting digital experiences that feel inevitable.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-stack-lg">
+                        I design and build production-grade web apps with React, FastAPI, and modern tooling. Focused on precision, performance, and the poetry of clean code.
+                    </p>
+<div class="flex flex-wrap gap-stack-md">
+<button class="px-8 py-4 bg-primary text-background font-label-md text-label-md font-bold hover:bg-transparent hover:text-primary border border-primary transition-all">
+                            VIEW WORK
+                        </button>
+<button class="px-8 py-4 border border-border-subtle text-on-surface-variant font-label-md text-label-md font-bold hover:border-primary hover:text-primary transition-all">
+                            GET IN TOUCH
+                        </button>
+</div>
+</div>
+<div class="md:col-span-5 lg:col-span-4 mt-stack-lg md:mt-0 relative">
+<div class="aspect-[4/5] bg-surface-elevated border border-border-subtle overflow-hidden relative group">
+<img alt="Developer Portrait" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="A professional portrait of a full-stack developer in a high-contrast black and white style. The subject is a male with sharp features, wearing a dark, minimal sweater, set against a dark architectural background. The lighting is dramatic, highlighting the texture of the fabric and the precision of the setting, maintaining a minimalist-technic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA532hEBf4fxbgOS10M34Sy__itqsIK16t-3j-khneOuOOvPoCVbadALfx51C1s28Z6JckauszQi0urgOAs_tuQZpHNjA5cuRtE_nT29C9ApsIGsUYnAxS9j0ae3ME8tIZcNG2WS-K4gr3_EvhA42K9l7aDui-mMEgv9AmqVs4eSLyAXVarHnvFlNqXJQN2OxNiddzRUr__eRR1XsIMr4QytrR9V0WyM0r59wYiGP6MTkmIrqjQJl07D8n16B2jkHpam9auyGx-CQ"/>
+<div class="absolute inset-0 border-[20px] border-black/20 pointer-events-none"></div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -bottom-4 -right-4 w-24 h-24 border-r border-b border-primary opacity-30"></div>
+</div>
+</div>
+</section>
+<!-- Capabilities Section -->
+<section class="bg-surface-elevated py-section-gap border-y border-border-subtle">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md">A craftsman's toolkit</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Technical mastery refined through years of focused implementation.</p>
+</div>
+<div class="md:col-span-8 space-y-stack-lg">
+<!-- Skill 1 -->
+<div class="space-y-stack-sm">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-primary">PYTHON (BACKEND)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">80%</span>
+</div>
+<div class="h-[4px] w-full bg-border-subtle">
+<div class="skill-bar-fill h-full bg-primary" style="width: 80%"></div>
+</div>
+</div>
+<!-- Skill 2 -->
+<div class="space-y-stack-sm">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-primary">HTML (FRONTEND)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">95%</span>
+</div>
+<div class="h-[4px] w-full bg-border-subtle">
+<div class="skill-bar-fill h-full bg-primary" style="width: 95%"></div>
+</div>
+</div>
+<!-- Skill 3 -->
+<div class="space-y-stack-sm">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-primary">CSS (FRONTEND)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">90%</span>
+</div>
+<div class="h-[4px] w-full bg-border-subtle">
+<div class="skill-bar-fill h-full bg-primary" style="width: 90%"></div>
+</div>
+</div>
+<!-- Skill 4 -->
+<div class="space-y-stack-sm">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-primary">VIBE CODING (ALL)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">98%</span>
+</div>
+<div class="h-[4px] w-full bg-border-subtle relative overflow-hidden">
+<div class="skill-bar-fill h-full bg-primary" style="width: 98%"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Selected Projects Section -->
+<section class="py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-x">
+<div class="flex justify-between items-end mb-stack-lg border-b border-border-subtle pb-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary">Selected projects</h2>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2" href="#">
+                        VIEW ALL <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Project Placeholder / Empty State -->
+<div class="craftsman-card border border-border-subtle bg-surface-container-lowest p-stack-lg aspect-square flex flex-col justify-center items-center text-center space-y-stack-md">
+<span class="material-symbols-outlined text-[48px] text-border-subtle" style="font-variation-settings: 'wght' 200;">architecture</span>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">No projects yet</p>
+<p class="font-body-md text-body-md text-outline">Refining the next masterpiece. Check back soon for production-grade builds.</p>
+</div>
+<!-- Dummy project layout for structure visualization -->
+<div class="craftsman-card border border-border-subtle bg-surface-container-lowest relative overflow-hidden group">
+<div class="p-stack-lg space-y-stack-md">
+<span class="mono-label font-label-sm text-label-sm text-on-surface-variant block">01 / ARCHIVE</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">The Obsidian Protocol</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">A secure, distributed data layer built for low-latency financial operations.</p>
+<div class="flex gap-stack-sm pt-stack-md">
+<span class="px-2 py-1 border border-border-subtle font-label-sm text-label-sm text-outline">RUST</span>
+<span class="px-2 py-1 border border-border-subtle font-label-sm text-label-sm text-outline">WASM</span>
+</div>
+</div>
+<div class="mt-auto aspect-video bg-border-subtle/20 border-t border-border-subtle"></div>
+</div>
+<div class="craftsman-card border border-border-subtle bg-surface-container-lowest relative overflow-hidden group">
+<div class="p-stack-lg space-y-stack-md">
+<span class="mono-label font-label-sm text-label-sm text-on-surface-variant block">02 / ARCHIVE</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Ethereal UI</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Design system for a high-performance cloud orchestration dashboard.</p>
+<div class="flex gap-stack-sm pt-stack-md">
+<span class="px-2 py-1 border border-border-subtle font-label-sm text-label-sm text-outline">REACT</span>
+<span class="px-2 py-1 border border-border-subtle font-label-sm text-label-sm text-outline">THREE.JS</span>
+</div>
+</div>
+<div class="mt-auto aspect-video bg-border-subtle/20 border-t border-border-subtle"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-section-gap border-t border-border-subtle">
+<div class="max-w-container-max mx-auto px-margin-x text-center">
+<div class="max-w-3xl mx-auto space-y-stack-lg">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">
+                        Let's build something worth remembering.
+                    </h2>
+<div class="pt-stack-lg">
+<a class="group inline-flex items-center gap-stack-md text-primary hover:text-outline transition-all" href="mailto:hello@craftsman.dev">
+<span class="font-headline-sm text-headline-sm border-b-2 border-primary group-hover:border-outline transition-all">hello@craftsman.dev</span>
+<span class="material-symbols-outlined text-[32px] group-hover:translate-x-2 transition-transform">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-subtle bg-background">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-x py-stack-lg max-w-container-max mx-auto">
+<!-- Brand Column -->
+<div class="flex flex-col justify-between h-full space-y-stack-lg">
+<div class="font-label-md text-label-md text-primary font-bold tracking-tighter">CRAFTSMAN</div>
+<div class="font-label-sm text-label-sm text-on-secondary-container">© 2024 Crafted by Design. All rights reserved.</div>
+</div>
+<!-- Social Column -->
+<div class="space-y-4 border-l md:border-l border-border-subtle pl-gutter">
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-4">Connect</div>
+<ul class="space-y-2">
+<li><a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors flex items-center gap-2 group" href="#"><span class="w-1 h-1 bg-primary scale-0 group-hover:scale-100 transition-transform"></span>GitHub</a></li>
+<li><a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors flex items-center gap-2 group" href="#"><span class="w-1 h-1 bg-primary scale-0 group-hover:scale-100 transition-transform"></span>LinkedIn</a></li>
+<li><a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors flex items-center gap-2 group" href="#"><span class="w-1 h-1 bg-primary scale-0 group-hover:scale-100 transition-transform"></span>Twitter</a></li>
+</ul>
+</div>
+<!-- Pages Column -->
+<div class="space-y-4 border-l border-border-subtle pl-gutter">
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-4">Navigation</div>
+<ul class="space-y-2">
+<li><a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors" href="#">Work</a></li>
+<li><a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors" href="#">Archive</a></li>
+<li><a class="font-label-md text-label-md text-on-secondary-container hover:text-primary transition-colors" href="#">Process</a></li>
+</ul>
+</div>
+<!-- Status Column -->
+<div class="space-y-4 border-l border-border-subtle pl-gutter">
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-widest mb-4">System Status</div>
+<div class="flex flex-col space-y-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase">Available for hire</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-secondary-container" id="system-time">GMT +00:00 — 00:00:00</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions & Logic
+        
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(2)');
+            el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+        });
+
+        // System Time
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-GB', { hour12: false });
+            const statusEl = document.getElementById('system-time');
+            if(statusEl) statusEl.textContent = `GMT +00:00 — ${timeStr}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Skill bar animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fill');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+            const targetWidth = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = targetWidth;
+            }, 500);
+        });
+
+        // Keyframe for shimmer (using style tag since tailwind might not have it)
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes shimmer {
+                100% { transform: translateX(100%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>
