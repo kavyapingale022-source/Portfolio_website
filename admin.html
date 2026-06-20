@@ -673,6 +673,7 @@
     <div class="form-row">
       <div class="form-group"><label class="form-label">Credential URL</label><input class="form-input" id="ct-url" placeholder="https://…"></div>
       <div class="form-group"><label class="form-label">Emoji Icon</label><input class="form-input" id="ct-emoji" placeholder="🏆"></div>
+      <div class="form-group"><label class="form-label">Image URL</label><input class="form-input" id="ct-image" placeholder="https://…/cert.png"></div>
     </div>
     <div class="flex gap-3 mt-4">
       <button class="btn btn-primary" onclick="saveCert()">💾 Save</button>
@@ -899,7 +900,7 @@ const DEFAULTS = {
   profile:{name:"Kavya Pingale",tagline:"Crafting digital experiences that feel inevitable.",bio:"I am a full-stack engineer with a passion for elegant interfaces and resilient systems. Over the years I have shipped products across fintech, dev-tools and consumer apps. I care deeply about typography, animation, and accessibility.",email:"kavyapingale022@gmail.com",phone:"+91 7666756173",location:"Remote · Worldwide",resumeUrl:"#",availability:"Available",role:"Full-Stack Web Developer"},
   skills:[{id:1,name:"Python",category:"Backend",level:80},{id:2,name:"HTML",category:"Frontend",level:95},{id:3,name:"CSS",category:"Frontend",level:90},{id:4,name:"Vibe Coding",category:"All",level:98}],
   technologies:["React","FastAPI","Python","JavaScript","MongoDB","PostgreSQL","Docker","Git","Figma","REST APIs","Node.js","VS Code"],
-  projects:[],
+  projects:[{id:1,title:'Civic-Connect-app',description:'A project by Kavya',github:'https://github.com/kavyapingale022-source/Civic-Connect-app',live:'https://v0-civic-issue-reporting-red.vercel.app',emoji:'🚀',tags:[]},{id:2,title:'Civic-reporter-app',description:'Created by Xottics ',github:'https://github.com/kavyapingale022-source/Civic-reporter-app',live:'None',emoji:'🚀',tags:[]},{id:3,title:'Disease-Pred',description:'A project by Kavya',github:'https://github.com/kavyapingale022-source/Disease-Pred',live:'None',emoji:'🚀',tags:[]},{id:4,title:'Portfolio_website',description:'This is i portfolio website of kavya pingale',github:'https://github.com/kavyapingale022-source/Portfolio_website',live:'https://portfolio-website-peach-six-77.vercel.app',emoji:'🚀',tags:[]},{id:5,title:'Responsive-landing-page',description:'this is responsive landing page of toy car shop ',github:'https://github.com/kavyapingale022-source/Responsive-landing-page',live:'https://responsive-landing-page-bay.vercel.app',emoji:'🚀',tags:[]},{id:6,title:'Stopwatch-Web-app',description:'A project by Kavya',github:'https://github.com/kavyapingale022-source/Stopwatch-Web-app',live:'https://stopwatch-web-app-sooty.vercel.app',emoji:'🚀',tags:[]},{id:7,title:'Tic-Tac-Toe-Web-app',description:'A project by Kavya',github:'https://github.com/kavyapingale022-source/Tic-Tac-Toe-Web-app',live:'https://tic-tac-toe-web-app-eight.vercel.app',emoji:'🚀',tags:[]},{id:8,title:'v0-work-entry-app',description:'A project by Kavya',github:'https://github.com/kavyapingale022-source/v0-work-entry-app',live:'https://v0-work-entry-app-seven.vercel.app',emoji:'🚀',tags:[]},{id:9,title:'Weather-Website',description:'this is a weather forecast website',github:'https://github.com/kavyapingale022-source/Weather-Website',live:'https://weather-website-ten-ebon.vercel.app',emoji:'🚀',tags:[]}],
   certificates:[{id:1,name:"AWS Solutions Architect — Associate",issuer:"Amazon Web Services",date:"2024",url:"https://aws.amazon.com/certification/",emoji:"☁️"}],
   education:[
     {id:1,school:"Carmel Convent School",degree:"10th",field:"SSC Board",period:"2022 — 2023",description:"Completed 10th grade from Carmel Convent School Khopoli and secured 90.80 percentage in 10th maharashtra state SSC board examination."},
@@ -1192,13 +1193,13 @@ function renderCerts(){
 function openCertModal(id){
   document.getElementById('cert-modal-title').textContent=id?'Edit Certificate':'Add Certificate';
   document.getElementById('cert-id').value=id||'';
-  if(id){ const c=D.certificates.find(x=>x.id===id)||{}; document.getElementById('ct-name').value=c.name||''; document.getElementById('ct-issuer').value=c.issuer||''; document.getElementById('ct-date').value=c.date||''; document.getElementById('ct-url').value=c.url||''; document.getElementById('ct-emoji').value=c.emoji||''; }
-  else   { ['ct-name','ct-issuer','ct-date','ct-url','ct-emoji'].forEach(i=>document.getElementById(i).value=''); }
+  if(id){ const c=D.certificates.find(x=>x.id===id)||{}; document.getElementById('ct-name').value=c.name||''; document.getElementById('ct-issuer').value=c.issuer||''; document.getElementById('ct-date').value=c.date||''; document.getElementById('ct-url').value=c.url||''; document.getElementById('ct-emoji').value=c.emoji||''; document.getElementById('ct-image').value=c.image||''; }
+  else   { ['ct-name','ct-issuer','ct-date','ct-url','ct-emoji','ct-image'].forEach(i=>document.getElementById(i).value=''); }
   openModal('cert-modal');
 }
 function saveCert(){
   const id=parseInt(document.getElementById('cert-id').value)||0;
-  const obj={name:document.getElementById('ct-name').value.trim(),issuer:document.getElementById('ct-issuer').value.trim(),date:document.getElementById('ct-date').value.trim(),url:document.getElementById('ct-url').value.trim(),emoji:document.getElementById('ct-emoji').value.trim()};
+  const obj={name:document.getElementById('ct-name').value.trim(),issuer:document.getElementById('ct-issuer').value.trim(),date:document.getElementById('ct-date').value.trim(),url:document.getElementById('ct-url').value.trim(),emoji:document.getElementById('ct-emoji').value.trim(),image:document.getElementById('ct-image').value.trim()};
   if(!obj.name){ showA('certs-alert','Please enter a certificate name.','error'); return; }
   if(id){ const i=D.certificates.findIndex(x=>x.id===id); if(i>-1) D.certificates[i]={...D.certificates[i],...obj}; }
   else   { D.certificates.push({id:uid(),...obj}); }
